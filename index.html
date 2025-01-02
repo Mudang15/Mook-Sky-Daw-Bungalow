@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mook Sky Daw Bungalow </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        body {
+            background-color: #e3f2fd;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+        }
+
+        .navbar a:hover {
+            color: #3498db;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('pho.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .destinations {
+            padding: 4rem 2rem;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .destination-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .contact {
+            background: #2c3e50;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .button:hover {
+            background: #2980b9;
+        }
+
+        .line-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #00B900;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .line-button:hover {
+            background: #009900;
+        }
+
+        .line-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .details-page {
+            padding-top: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+
+        .details-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .details-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .details-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .details-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .about-section {
+            padding: 4rem 2rem;
+            background: white;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .page-section {
+            display: none;
+            padding-top: 60px;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" onclick="showPage('home')">หน้าแรก</a>
+        <a href="#" onclick="showPage('about')">เกี่ยวกับฉัน</a>
+        <a href="#" onclick="showPage('destinations')">จองที่พัก</a>
+        <a href="#" onclick="showPage('accommodation')">บริการทัวร์</a>
+        <a href="#" onclick="showPage('contact')">ติดต่อเรา</a>
+    </nav>
+
+    <div id="home" class="page-section active">
+        <section class="hero">
+            <div>
+                <h1>ค้นพบประสบการณ์การท่องเที่ยวที่น่าจดจำ</h1>
+                <p>เราพร้อมพาคุณไปสัมผัสประสบการณ์ที่แสนพิเศษ</p>
+                <a href="#" onclick="showPage('destinations')" class="button">จองที่พัก</a>
+            </div>
+        </section>
+    </div>
+
+    <div id="about" class="page-section">
+        <div class="about-section">
+            <h2>เกี่ยวกับฉัน</h2>
+            <div class="details-content">
+                <p>เรามีประสบการณ์มากกว่า 10 ปี</p>
+                <p>เรามีความเชี่ยวชาญในการจัดทริปท่องเที่ยวที่มีคุณภาพ</p>
+                <ul>
+                    <li>บริการจัดทริปส่วนตัว</li>
+                    <li>ทีมงานมืออาชีพ</li>
+                    <li>ราคายุติธรรม</li>
+                    <li>ความปลอดภัยสูงสุด</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="destinations" class="page-section">
+        <div class="destinations">
+            <h2>Mook Sky Daw Bungalow</h2>
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <img src="pho.jpg" alt="สถานที่ท่องเที่ยว 1">
+                    <div class="card-content">
+                        <h3>Mook Sky Daw Bungalow</h3>
+                        <p>สัมผัสความงามของชายหาดที่สวยที่สุด พร้อมกิจกรรมมากมาย</p>
+                        <a href="#" onclick="showDetails('beach')" class="button">ดูรายละเอียด</a>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="accommodation" class="page-section">
+        <div class="destinations">
+            <h2>Mook Sky Daw Bungalow </h2>
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <img src="pho.jpg" alt="ที่พัก 1">
+                    <div class="card-content">
+                        <h3>Mook Sky Daw Bungalow </h3>
+                        <p>พักผ่อนท่ามกลางบรรยากาศริมทะเล</p>
+                        <p>ราคาเริ่มต้น: 2,500 บาท</p>
+                        <a href="#" onclick="showDetails('resort')" class="button">ดูรายละเอียด</a>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="page-section">
+        <section class="contact">
+            <h2>ติดต่อเรา</h2>
+            <div class="contact-info">
+                <div>
+                    <h3>ที่อยู่</h3>
+                    <p>123 ถนนสุขุมวิท กรุงเทพฯ 10110</p>
+                </div>
+                <div>
+                    <h3>โทรศัพท์</h3>
+                    <p>02-123-4567</p>
+                </div>
+                <div>
+                    <h3>อีเมล</h3>
+                    <p>info@travel.com</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Details Pages -->
+    <div id="beach-details" class="page-section details-page">
+        <div class="details-header">
+            <h2>ชายหาดสวย</h2>
+        </div>
+        <div class="details-content">
+            <div class="details-gallery">
+                <img src="pho9.jpg" alt="ชายหาด 1">
+                <img src="pho1.jpg" alt="ชายหาด 2">
+                <img src="pho2.jpg" alt="ชายหาด 3">
+				<img src="pho3.jpg" alt="ชายหาด 1">
+                <img src="pho4.jpg" alt="ชายหาด 2">
+                <img src="pho5.jpg" alt="ชายหาด 3">
+				<img src="pho6.jpg" alt="ชายหาด 1">
+                <img src="pho7.jpg" alt="ชายหาด 2">
+                <img src="pho10.jpg" alt="ชายหาด 3">
+				
+            </div>
+            <h3>รายละเอียด</h3>
+            <p>ชายหาดที่สวยงามพร้อมกิจกรรมมากมาย</p>
+            <ul>
+                <h3>รายละเอียดที่พัก</h3>
+            <p>รีสอร์ทริมทะเลที่พร้อมมอบประสบการณ์การพักผ่อนที่แสนพิเศษให้กับคุณ</p>
+            
+            <h4>สิ่งอำนวยความสะดวก</h4>
+            <ul>
+                <li>สระว่ายน้ำส่วนตัวทุกห้อง</li>
+                <li>วิวทะเลจากระเบียงส่วนตัว</li>
+                <li>เครื่องปรับอากาศ</li>
+                <li>WiFi ความเร็วสูง</li>
+                <li>ห้องอาหารริมทะเล</li>
+                <li>สปาและนวดแผนไทย</li>
+            </ul>
+
+            <h4>ประเภทห้องพัก</h4>
+            <ul>
+                <li>ห้องดีลักซ์ วิวทะเล (40 ตร.ม.) - 2,500 บาท/คืน</li>
+                <li>ห้องพูลวิลล่า (60 ตร.ม.) - 4,500 บาท/คืน</li>
+                <li>ห้องสวีท วิวทะเล (80 ตร.ม.) - 6,500 บาท/คืน</li>
+            </ul>
+
+            <h4>บริการเสริม</h4>
+            <ul>
+                <li>รถรับ-ส่ง สนามบิน</li>
+                <li>ทัวร์ดำน้ำ</li>
+                <li>เช่าเรือส่วนตัว</li>
+                <li>จัดเลี้ยงและอีเวนต์</li>
+            </ul>
+
+            <h4>นโยบายการจอง</h4>
+            <p>- เช็คอิน: 14:00 น.<br>
+               - เช็คเอาต์: 12:00 น.<br>
+               - มัดจำ 50% ของราคาห้องพัก<br>
+               - ยกเลิกฟรีล่วงหน้า 7 วัน</p>
+            </ul>
+            <a href="https://line.me/R/ti/p/@yourlineid" class="button" target="_blank">จองทริป</a>
+        </div>
+    </div>
+	    	
+	<!-- ส่วนโค้ดก่อนหน้ายังคงเหมือนเดิม จนถึงส่วน resort-details -->
+    <div id="resort-details" class="page-section details-page">
+        <div class="details-header">
+            <h2>รีสอร์ทริมทะเล</h2>
+        </div>
+        <div class="details-content">
+            <div class="details-gallery">
+                <img src="pho.jpg" alt="รีสอร์ท 1">
+                <img src="pho.jpg" alt="รีสอร์ท 2">
+                <img src="pho.jpg" alt="รีสอร์ท 3">
+            </div>
+            <h3>รายละเอียดที่พัก</h3>
+            <p>รีสอร์ทริมทะเลที่พร้อมมอบประสบการณ์การพักผ่อนที่แสนพิเศษให้กับคุณ</p>
+            
+            <h4>สิ่งอำนวยความสะดวก</h4>
+            <ul>
+                <li>สระว่ายน้ำส่วนตัวทุกห้อง</li>
+                <li>วิวทะเลจากระเบียงส่วนตัว</li>
+                <li>เครื่องปรับอากาศ</li>
+                <li>WiFi ความเร็วสูง</li>
+                <li>ห้องอาหารริมทะเล</li>
+                <li>สปาและนวดแผนไทย</li>
+            </ul>
+
+            <h4>ประเภทห้องพัก</h4>
+            <ul>
+                <li>ห้องดีลักซ์ วิวทะเล (40 ตร.ม.) - 2,500 บาท/คืน</li>
+                <li>ห้องพูลวิลล่า (60 ตร.ม.) - 4,500 บาท/คืน</li>
+                <li>ห้องสวีท วิวทะเล (80 ตร.ม.) - 6,500 บาท/คืน</li>
+            </ul>
+
+            <h4>บริการเสริม</h4>
+            <ul>
+                <li>รถรับ-ส่ง สนามบิน</li>
+                <li>ทัวร์ดำน้ำ</li>
+                <li>เช่าเรือส่วนตัว</li>
+                <li>จัดเลี้ยงและอีเวนต์</li>
+            </ul>
+
+            <h4>นโยบายการจอง</h4>
+            <p>- เช็คอิน: 14:00 น.<br>
+               - เช็คเอาต์: 12:00 น.<br>
+               - มัดจำ 50% ของราคาห้องพัก<br>
+               - ยกเลิกฟรีล่วงหน้า 7 วัน</p>
+
+            <a href="https://line.me/R/ti/p/@yourlineid" class="button" target="_blank">จองห้องพัก</a>
+        </div>
+    </div>
+
+   
+
+<!-- ส่วนโค้ดที่เหลือยังคงเหมือนเดิม -->
+	
+
+    <div id="mountain-details" class="page-section details-page">
+        <!-- เพิ่มเนื้อหาคล้ายกับ beach-details -->
+    </div>
+
+    <div id="resort-details" class="page-section details-page">
+        <!-- เพิ่มเนื้อหาคล้ายกับ beach-details -->
+    </div>
+
+    <div id="garden-details" class="page-section details-page">
+        <!-- เพิ่มเนื้อหาคล้ายกับ beach-details -->
+    </div>
+
+    <a href="https://line.me/R/ti/p/@yourlineid" class="line-button" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE" class="line-icon">
+        ติดต่อเรา
+    </a>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function showDetails(type) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+            // Show details page
+            document.getElementById(`${type}-details`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
